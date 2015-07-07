@@ -15,9 +15,16 @@
         return -1;
     }
     const char* startString = [start UTF8String];
+    const char* endString = [finish UTF8String];
     char *mutableStartString = malloc(start.length);
     strcpy(mutableStartString, startString);
-    // DO STUFF HERE
+    int steps = 0;
+    for (int i = 0; i < start.length; i++) {
+        mutableStartString[i] = endString[i];
+        if (![forbid containsObject:[NSString stringWithCString:mutableStartString]]) {
+            steps += [self findShortestPathBetween:mutableStartString[i] and:endString[i]];
+        }
+    }
     free(mutableStartString);
     return 0;
 }
