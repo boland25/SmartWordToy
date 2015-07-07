@@ -27,8 +27,8 @@ int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
         SmartWordToy *toy = [SmartWordToy new];
-        int c = [toy findShortestPathBetween:'a' and:'l'];
-        [toy minPressesWithStart:@"aaaa" finish:@"zzzz" andForbid:[NSSet new]];
+        int c;
+        c =[toy minPressesWithStart:@"aaaa" finish:@"zzzz" andForbid:[NSArray new]];
         NSLog(@"Steps: %i", c);
     }
     return 0;

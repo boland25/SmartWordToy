@@ -10,7 +10,7 @@
 
 @implementation SmartWordToy
 
--(int)minPressesWithStart:(NSString *)start finish:(NSString *)finish andForbid:(NSSet *)forbid {
+-(int)minPressesWithStart:(NSString *)start finish:(NSString *)finish andForbid:(NSArray *)forbid {
     if ([forbid containsObject:start] || [forbid containsObject:finish]) {
         return -1;
     }
@@ -19,12 +19,17 @@
     char *mutableStartString = malloc(start.length);
     strcpy(mutableStartString, startString);
     int steps = 0;
-    for (int i = 0; i < start.length; i++) {
+    for (int i=0; i<start.length; i++) {
         mutableStartString[i] = endString[i];
-        if (![forbid containsObject:[NSString stringWithCString:mutableStartString]]) {
-            steps += [self findShortestPathBetween:mutableStartString[i] and:endString[i]];
-        } else {
-            mutableStartString[i] = startString[i];
+        int failNumber = 0;
+        for (int n=0; n<start.length; n++) {
+            NSString *testString = [NSString stringWithCString:mutableStartString];
+            if ([forbid[i] containsObject:[NSString stringWithFormat:@"%c", [testString characterAtIndex:n]]]) {
+                failNumber++;
+            }
+            if (failNumber == 3) {
+                mutableStartString[i] = startString[i];
+            }
         }
     }
     free(mutableStartString);
