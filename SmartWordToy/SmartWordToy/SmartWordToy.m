@@ -30,10 +30,15 @@
             if (failNumber == 3) {
                 mutableStartString[i] = startString[i];
             }
+            if (failNumber != 3 && n == 3) {
+                NSLog(@"Done!");
+                steps += [self findShortestPathBetween:startString[i] and:endString[i]];
+                break;
+            }
         }
     }
     free(mutableStartString);
-    return 0;
+    return steps;
 }
 
 - (int)findShortestPathBetween:(int)a and:(int)b {
