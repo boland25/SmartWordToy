@@ -11,18 +11,14 @@
 @implementation SmartWordToy
 
 -(int)minPressesWithStart:(NSString *)start finish:(NSString *)finish andForbid:(NSSet *)forbid {
-//    if ([forbid containsObject:start] || [forbid containsObject:finish]) {
-//        return -1;
-//    }
-//    const char* startString = [start UTF8String];
-//    char *mutableStartString = malloc(start.length);
-//    strcpy(mutableStartString, startString);
-//    for(int n=0; n<start.length; n++) {
-//        int x = mutableStartString[n];
-//        NSLog(@"%i", x);
-//    }
-//    
-//    free(mutableStartString);
+    if ([forbid containsObject:start] || [forbid containsObject:finish]) {
+        return -1;
+    }
+    const char* startString = [start UTF8String];
+    char *mutableStartString = malloc(start.length);
+    strcpy(mutableStartString, startString);
+    // DO STUFF HERE
+    free(mutableStartString);
     return 0;
 }
 
