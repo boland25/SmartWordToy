@@ -23,6 +23,8 @@
         mutableStartString[i] = endString[i];
         if (![forbid containsObject:[NSString stringWithCString:mutableStartString]]) {
             steps += [self findShortestPathBetween:mutableStartString[i] and:endString[i]];
+        } else {
+            mutableStartString[i] = startString[i];
         }
     }
     free(mutableStartString);
