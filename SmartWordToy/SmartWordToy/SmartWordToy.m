@@ -29,10 +29,12 @@
             }
             if (failNumber == 3) {
                 mutableStartString[i] = startString[i];
+                NSLog(@"Backtracking! Steps: %i", steps);
+                steps -= [self findShortestPathBetween:(int)startString[i] and:(int)endString[i]];
             }
             if (failNumber != 3 && n == 3) {
-                NSLog(@"Done!");
-                steps += [self findShortestPathBetween:startString[i] and:endString[i]];
+                steps += [self findShortestPathBetween:(int)startString[i] and:(int)endString[i]];
+                NSLog(@"Done! Steps: %i", steps);
                 break;
             }
         }
@@ -43,7 +45,7 @@
 
 - (int)findShortestPathBetween:(int)a and:(int)b {
     int dist = abs ( a - b );
-    return MIN( ('z' - 'a') - dist, dist);
+    return MIN( 26 - dist, dist);
 }
 
 @end

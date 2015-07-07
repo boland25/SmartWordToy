@@ -28,7 +28,7 @@ int main(int argc, const char * argv[]) {
         // insert code here...
         SmartWordToy *toy = [SmartWordToy new];
         int c;
-        c =[toy minPressesWithStart:@"aaaa" finish:@"zzzz" andForbid:@[[NSSet setWithObject:@"z"], [NSSet setWithObject:@"a"], [NSSet setWithObject:@"a"], [NSSet setWithObject:@"a"]]];
+        c =[toy minPressesWithStart:@"aaaa" finish:@"bbaa" andForbid:@[[NSSet setWithObject:@"z"], [NSSet setWithObject:@"a"], [NSSet setWithObject:@"a"], [NSSet setWithObject:@"a"]]];
         NSLog(@"Steps: %i", c);
     }
     return 0;
