@@ -23,6 +23,7 @@
         mutableStartString[i] = endString[i];
         int failNumber = 0;
         for (int n=0; n<start.length; n++) {
+            int breakIf = 0;
             NSString *testString = [NSString stringWithCString:mutableStartString];
             if ([forbid[i] containsObject:[NSString stringWithFormat:@"%c", [testString characterAtIndex:n]]]) {
                 failNumber++;
@@ -35,6 +36,10 @@
             if (failNumber != 3 && n == 3) {
                 steps += [self findShortestPathBetween:(int)startString[i] and:(int)endString[i]];
                 NSLog(@"Done! Steps: %i", steps);
+                breakIf++;
+                break;
+            }
+            if (breakIf > 0) {
                 break;
             }
         }
